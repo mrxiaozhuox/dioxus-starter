@@ -8,7 +8,7 @@ mod hooks;
 mod pages;
 mod mode;
 
-use pages::starter::{HelloDioxus, SayHi};
+use pages::starter::{HelloDioxus, SayHi, About};
 
 static DARK_MODE: dioxus::fermi::Atom<bool> = |_| {
     let dark = mode::is_dark();
@@ -20,7 +20,7 @@ static TOAST_MANAGER: dioxus::fermi::AtomRef<ToastManager> = |_| ToastManager::d
 
 fn main() {
     wasm_logger::init(wasm_logger::Config::default());
-    log::info!("Dioxus Starter: https://github.com/mrxiaozhuox/dioxus-starter");
+    log::info!("Powered by Dioxus Starter: https://github.com/mrxiaozhuox/dioxus-starter");
     dioxus::web::launch(App)
 }
 
@@ -41,6 +41,10 @@ fn App(cx: Scope) -> Element {
             Route {
                 to: "/hi/:name",
                 SayHi {}
+            }
+            Route {
+                to: "/about",
+                About {}
             }
             Route { to: "", pages::_404::NotFound {} }
         }

@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use dioxus_toast::ToastInfo;
 
-use crate::{components::nav::ButtonList, TOAST_MANAGER};
+use crate::{components::{nav::ButtonList, content::Href}, TOAST_MANAGER};
 
 pub fn HelloDioxus(cx: Scope) -> Element {
     let window = web_sys::window().unwrap();
@@ -9,7 +9,7 @@ pub fn HelloDioxus(cx: Scope) -> Element {
     let toast = use_atom_ref(&cx, TOAST_MANAGER);
     cx.render(rsx! {
         section {
-            class: "h-screen bg-cover bg-gray-100 dark:bg-gray-600",
+            class: "h-screen bg-cover bg-white dark:bg-gray-600",
             div {
                 class: "flex h-full w-full items-center justify-center container mx-auto px-8",
                 div {
@@ -27,7 +27,7 @@ pub fn HelloDioxus(cx: Scope) -> Element {
                         input {
                             r#type: "text",
                             class: "rounded-md border border-transparent bg-gray-800 dark:bg-white/20 px-4 py-2 text-white placeholder-white backdrop-blur-sm focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 sm:mx-2",
-                            placeholder: "What's your name?",
+                            placeholder: "What's your name ?",
                             oninput: move |e| input_name.set(e.value.clone()),
                             value: "{input_name}"
                         }
@@ -65,6 +65,43 @@ pub fn SayHi(cx: Scope) -> Element {
                     h1 {
                         class: "text-3xl sm:text-5xl capitalize tracking-widest dark:text-white lg:text-6xl",
                         "Hi, \"{name}\""
+                    }
+                    ButtonList {}
+                }
+            }
+        }
+    })
+}
+
+pub fn About(cx: Scope) -> Element {
+    cx.render(rsx! {
+        section {
+            class: "h-screen bg-cover bg-white dark:bg-gray-600",
+            div {
+                class: "flex h-full w-full items-center justify-center container mx-auto px-8",
+                div {
+                    class: "max-w-2xl text-center",
+                    h1 {
+                        class: "text-3xl capitalize tracking-widest dark:text-white",
+                        "About Dioxus Starter"
+                    }
+                    div {
+                        class: "text-gray-800 dark:text-white mt-6",
+                        Href {
+                            to: "/",
+                            "Dioxus Starter"
+                        }
+                        " is a "
+                        Href {
+                            to: "https://dioxuslabs.com/",
+                            "Dioxus Web"
+                        }
+                        " template made by "
+                        Href {
+                            to: "http://github.com/mrxiaozhuox",
+                            "@mrxiaozhuox"
+                        }
+                        " for quick app development"
                     }
                     ButtonList {}
                 }
