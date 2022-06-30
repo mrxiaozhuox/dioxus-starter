@@ -4,7 +4,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://dioxuslabs.com"> English </a>
+    <span> English </span>
     <span> | </span>
     <a href="https://github.com/mrxiaozhuox/dioxus-starter/blob/master/README.zh-CN.md"> 简体中文 </a>
   </h3>
