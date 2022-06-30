@@ -1,5 +1,7 @@
 use dioxus::prelude::*;
 
+use crate::hooks::markdown::use_markdown;
+
 #[inline_props]
 pub fn Href<'a>(cx: Scope, to: &'a str, children: Element<'a>) -> Element {
     cx.render(rsx! {
@@ -18,9 +20,11 @@ pub struct MarkdownProps {
 }
 
 pub fn Markdown(cx: Scope<MarkdownProps>) -> Element {
+    let md_parser = use_markdown(&cx);
+    let content = md_parser(cx.props.content.clone());
     cx.render(rsx! {
         div {
-
+            dangerous_inner_html: "{content}",
         }
     })
 }

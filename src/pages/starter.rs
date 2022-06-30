@@ -1,7 +1,10 @@
 use dioxus::prelude::*;
 use dioxus_toast::ToastInfo;
 
-use crate::{components::{nav::ButtonList, content::Href}, TOAST_MANAGER};
+use crate::{
+    components::{content::Href, nav::ButtonList},
+    TOAST_MANAGER,
+};
 
 pub fn HelloDioxus(cx: Scope) -> Element {
     let window = web_sys::window().unwrap();
