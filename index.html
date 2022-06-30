@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>dioxus-starter | ⛺</title>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="favicon.ico">
+  
+</head>
+<body>
+  <!-- Dioxus Starter: https://github.com/mrxiaozhuox/dixous-starter -->
+  <div id="main"></div>
+  <script type="module">
+    import init from "/./assets/dioxus/dioxus-starter.js";
+    init("/./assets/dioxus/dioxus-starter_bg.wasm").then(wasm => {
+      if (wasm.__wbindgen_start == undefined) {
+        wasm.main();
+      }
+    });
+  </script>
+  <script src="/assets/tailwind.min.js"></script>
+<script src="/assets/tailwind.config.js"></script>
+
+</body>
+</html>
