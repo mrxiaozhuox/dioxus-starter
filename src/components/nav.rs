@@ -1,16 +1,16 @@
 use dioxus::prelude::*;
 use dioxus_free_icons::{Icon, icons::{fa_solid_icons, fa_brands_icons}};
 
-use crate::{mode::mode, DARK_MODE};
+use crate::hooks::mode::{mode, is_dark};
 
 pub fn ButtonList(cx: Scope) -> Element {
 
-    let mode_icon = if *use_read(&cx, DARK_MODE) {
+    log::info!("dark mode: {:?}", is_dark(&cx));
+    let mode_icon = if is_dark(&cx) {
         fa_solid_icons::FaSun
     } else {
         fa_solid_icons::FaMoon
     };
-    let set_mode = use_set(&cx, DARK_MODE);
 
     cx.render(rsx! {
         div {
@@ -28,8 +28,8 @@ pub fn ButtonList(cx: Scope) -> Element {
                 href: "javascript:;",
                 onclick: move |_| {
                     let is_dark = mode_icon == fa_solid_icons::FaMoon;
-                    mode(is_dark);
-                    set_mode(is_dark);
+                    mode(&cx, is_dark);
+                    cx.needs_update();
                 },
                 Icon {
                     size: 26,

@@ -11,3 +11,16 @@ pub fn Href<'a>(cx: Scope, to: &'a str, children: Element<'a>) -> Element {
         }
     })
 }
+
+#[derive(Props, PartialEq)]
+pub struct MarkdownProps {
+    content: String,
+}
+
+pub fn Markdown(cx: Scope<MarkdownProps>) -> Element {
+    cx.render(rsx! {
+        div {
+
+        }
+    })
+}

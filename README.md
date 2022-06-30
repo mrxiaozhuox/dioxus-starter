@@ -31,7 +31,7 @@
 - [Dioxus Fermi](https://github.com/DioxusLabs/dioxus/tree/master/packages/fermi) - Atom-based global state management solution for Dioxus
 - [Dioxus Free Icon](https://github.com/nissy-dev/dioxus-free-icons) - Use free svg icons in your Dioxus
 - [Dioxus Toast](https://github.com/mrxiaozhuox/dioxus-toast) - Add toast support for your Dioxus
-
+- [Dioxus Use Storage](https://github.com/oovm/dioxus-hooks/tree/master/projects/dioxus-use-storage) - Add Storage Hooks for Dioxus
 
 ## Try it
 

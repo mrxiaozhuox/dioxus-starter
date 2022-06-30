@@ -1,20 +1,14 @@
 #![allow(non_snake_case)]
 
 use dioxus::prelude::*;
-use dioxus_toast::{ToastManager, ToastFrame};
+use dioxus_toast::{ToastFrame, ToastManager};
 
 mod components;
 mod hooks;
 mod pages;
-mod mode;
 
-use pages::starter::{HelloDioxus, SayHi, About};
-
-static DARK_MODE: dioxus::fermi::Atom<bool> = |_| {
-    let dark = mode::is_dark();
-    mode::mode(dark);
-    dark
-};
+use hooks::mode::init_mode_info;
+use pages::starter::{About, HelloDioxus, SayHi};
 
 static TOAST_MANAGER: dioxus::fermi::AtomRef<ToastManager> = |_| ToastManager::default();
 
@@ -25,8 +19,9 @@ fn main() {
 }
 
 fn App(cx: Scope) -> Element {
-
     let toast = use_atom_ref(&cx, TOAST_MANAGER);
+
+    init_mode_info(&cx);
 
     cx.render(rsx! {
         ToastFrame {
