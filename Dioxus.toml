@@ -1,0 +1,69 @@
+[application]
+
+# dioxus project name
+name = "dioxus-starter"
+
+# default platfrom
+# you can also use `dioxus serve/build --platform XXX` to use other platform
+# value: web | desktop
+default_platform = "web"
+
+# Web `build` & `serve` dist path
+out_dir = "dist"
+
+# resource (static) file folder
+asset_dir = "public"
+
+[web.app]
+
+# HTML title tag content
+title = "dioxus-starter | ⛺"
+
+[web.watcher]
+
+watch_path = [
+    "src", 
+    "public", 
+    "Dioxus.toml",
+]
+
+index_on_404 = true
+
+# include `assets` in web platform
+[web.resource]
+
+# CSS style file
+style = []
+
+# Javascript code file
+script = [
+    "/assets/tailwind.min.js",
+    "/assets/tailwind.config.js",
+]
+
+[web.resource.dev]
+
+# Javascript code file
+# serve: [dev-server] only
+script = []
+
+[application.tools]
+
+# use binaryen.wasm-opt for output Wasm file
+# binaryen just will trigger in `web` platform
+binaryen = { wasm_opt = true }
+
+# use sass auto will auto check sass file and build it.
+[application.tools.sass]
+
+# auto will check the assets dirs, and auto to transform all scss file to css file.
+input = "*"
+
+# or you can specify some scss file -> css file
+# input = [
+#     # some sass file path
+#     # this file will translate to `/css/test.css`
+#     "/css/test.scss"
+# ]
+
+source_map = true

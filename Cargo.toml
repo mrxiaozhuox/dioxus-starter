@@ -1,0 +1,18 @@
+[package]
+name = "dioxus-starter"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dioxus = { version = "0.2.4", features = ["web", "router", "fermi"] }
+js-sys = "0.3.58"
+web-sys = { version = "0.3.58", features = ["Storage"] }
+dioxus-free-icons = "0.1.1"
+dioxus-toast = { version = "0.1.5", default-features = false, features = ["web"] }
+gloo = "0.8.0"
+log = "0.4.6"
+wasm-logger = "0.2.0"
+anyhow = "1.0.57"
+urlencoding = "2.1.0"
