@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <a href="dioxus-starter.mrxzx.info">Online Demo</a>
+  <a href="http://dioxus-starter.mrxzx.info">Online Demo</a>
 </div>
 
 <div align="center">
