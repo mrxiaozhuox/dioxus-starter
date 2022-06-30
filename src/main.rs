@@ -19,15 +19,15 @@ fn main() {
 }
 
 fn App(cx: Scope) -> Element {
-    let toast = use_atom_ref(&cx, TOAST_MANAGER);
-
+    // init mode information
     init_mode_info(&cx);
-
     cx.render(rsx! {
+        // dioxus toast manager init
         ToastFrame {
-            manager: toast,
+            manager: use_atom_ref(&cx, TOAST_MANAGER),
             maximum: 6,
         }
+        // dioxus router info
         Router {
             Route {
                 to: "/",
@@ -41,6 +41,7 @@ fn App(cx: Scope) -> Element {
                 to: "/about",
                 About {}
             }
+            // 404 page
             Route { to: "", pages::_404::NotFound {} }
         }
     })
