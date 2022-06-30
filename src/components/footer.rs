@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use dioxus_free_icons::{Icon, icons::{fa_solid_icons, fa_brands_icons}};
 
-use crate::hooks::mode::{mode, is_dark};
+use crate::{hooks::mode::{mode, is_dark}, components::content::Href};
 
 pub fn Footer(cx: Scope) -> Element {
 
@@ -51,6 +51,19 @@ pub fn Footer(cx: Scope) -> Element {
                     size: 26,
                     icon: fa_brands_icons::FaGithub
                 }
+            }
+        }
+        div {
+            class: "mt-10 flex justify-center text-gray-400",
+            span {
+                "[ made by "
+                a {
+                    class: "underline",
+                    href: "https://github.com/mrxiaozhuox/",
+                    target: "_blank",
+                    "@mrxiaozhuox"
+                }
+                " ]"
             }
         }
     })
