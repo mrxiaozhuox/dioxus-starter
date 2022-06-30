@@ -2,7 +2,7 @@ use dioxus::prelude::*;
 use dioxus_toast::ToastInfo;
 
 use crate::{
-    components::{content::Href, nav::ButtonList},
+    components::{content::Href, footer::Footer},
     TOAST_MANAGER,
 };
 
@@ -47,7 +47,7 @@ pub fn HelloDioxus(cx: Scope) -> Element {
                             "Go"
                         }
                     }
-                    ButtonList {}
+                    Footer {}
                 }
             }
         }
@@ -69,7 +69,7 @@ pub fn SayHi(cx: Scope) -> Element {
                         class: "text-3xl sm:text-5xl capitalize tracking-widest dark:text-white lg:text-6xl",
                         "Hi, \"{name}\""
                     }
-                    ButtonList {}
+                    Footer {}
                 }
             }
         }
@@ -106,7 +106,7 @@ pub fn About(cx: Scope) -> Element {
                         }
                         " for quick app development"
                     }
-                    ButtonList {}
+                    Footer {}
                 }
             }
         }

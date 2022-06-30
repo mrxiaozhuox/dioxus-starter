@@ -3,6 +3,10 @@
 </div>
 
 <div align="center">
+  <a href="dioxus-starter.mrxzx.info">Online Demo</a>
+</div>
+
+<div align="center">
   <h3>
     <span> English </span>
     <span> | </span>

@@ -1,2 +1,2 @@
-pub mod nav;
+pub mod footer;
 pub mod content;

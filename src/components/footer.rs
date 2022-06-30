@@ -3,7 +3,7 @@ use dioxus_free_icons::{Icon, icons::{fa_solid_icons, fa_brands_icons}};
 
 use crate::hooks::mode::{mode, is_dark};
 
-pub fn ButtonList(cx: Scope) -> Element {
+pub fn Footer(cx: Scope) -> Element {
 
     log::info!("dark mode: {:?}", is_dark(&cx));
     let mode_icon = if is_dark(&cx) {
