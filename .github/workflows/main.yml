@@ -9,7 +9,8 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: DioxusLabs/deploy-action
+      - name: "Dioxus Deploy"
+        uses: DioxusLabs/deploy-action
         with:
           toolSource: "mrxiaozhuox/dioxus-cli"
       # - uses: actions/checkout@v2
