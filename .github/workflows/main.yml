@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: DioxusLabs/deploy-action
-      with:
-        toolSource: "mrxiaozhuox/dioxus-cli"
+        with:
+          toolSource: "mrxiaozhuox/dioxus-cli"
       # - uses: actions/checkout@v2
       # - uses: actions-rs/toolchain@v1
       #   with:
