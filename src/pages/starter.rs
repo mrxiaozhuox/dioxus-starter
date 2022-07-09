@@ -2,7 +2,7 @@ use dioxus::prelude::*;
 use dioxus_toast::ToastInfo;
 
 use crate::{
-    components::{content::Href, footer::Footer},
+    components::{content::{Href, Markdown}, footer::Footer},
     TOAST_MANAGER,
 };
 
@@ -108,6 +108,17 @@ pub fn About(cx: Scope) -> Element {
                     }
                     Footer {}
                 }
+            }
+        }
+    })
+}
+
+pub fn MarkdownDisplay(cx: Scope) -> Element {
+    cx.render(rsx! {
+        div {
+            class: "pt-6 container mx-auto",
+            Markdown {
+                content: "# Hello World".to_string()
             }
         }
     })

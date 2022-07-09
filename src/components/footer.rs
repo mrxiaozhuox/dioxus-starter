@@ -1,10 +1,12 @@
 use dioxus::prelude::*;
-use dioxus_free_icons::{Icon, icons::{fa_solid_icons, fa_brands_icons}};
+use dioxus_free_icons::{
+    icons::{fa_brands_icons, fa_solid_icons},
+    Icon,
+};
 
-use crate::{hooks::mode::{mode, is_dark}, components::content::Href};
+use crate::hooks::mode::{is_dark, mode};
 
 pub fn Footer(cx: Scope) -> Element {
-
     log::info!("dark mode: {:?}", is_dark(&cx));
     let mode_icon = if is_dark(&cx) {
         fa_solid_icons::FaSun
@@ -34,6 +36,14 @@ pub fn Footer(cx: Scope) -> Element {
                 Icon {
                     size: 26,
                     icon: mode_icon
+                }
+            }
+            Link {
+                class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
+                to: "/markdown",
+                Icon {
+                    size: 26,
+                    icon: fa_brands_icons::FaMarkdown
                 }
             }
             Link {

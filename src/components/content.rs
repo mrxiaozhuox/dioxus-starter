@@ -22,8 +22,10 @@ pub struct MarkdownProps {
 pub fn Markdown(cx: Scope<MarkdownProps>) -> Element {
     let md_parser = use_markdown(&cx);
     let content = md_parser(cx.props.content.clone());
+    let _ = js_sys::eval("setTimeout(() => {initMarkdownBody();}, 100);");
     cx.render(rsx! {
         div {
+            id: "markdown-body",
             dangerous_inner_html: "{content}",
         }
     })
