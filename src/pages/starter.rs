@@ -1,14 +1,20 @@
-use dioxus::prelude::*;
+use std::sync::Arc;
+
+use dioxus::{prelude::*, router::RouterCore};
 use dioxus_toast::ToastInfo;
 
 use crate::{
-    components::{content::{Href, Markdown}, footer::Footer},
+    components::{
+        content::{Href, Markdown},
+        footer::Footer,
+    },
     TOAST_MANAGER,
 };
 
 pub fn HelloDioxus(cx: Scope) -> Element {
     let window = web_sys::window().unwrap();
     let input_name = use_state(&cx, String::new);
+    let svc = cx.use_hook(|_| cx.consume_context::<Arc<RouterCore>>());
     let toast = use_atom_ref(&cx, TOAST_MANAGER);
     cx.render(rsx! {
         section {
@@ -39,7 +45,9 @@ pub fn HelloDioxus(cx: Scope) -> Element {
                             onclick: move |_| {
                                 let name = input_name.get();
                                 if !name.is_empty() {
-                                    let _ = window.location().set_href(&format!("/hi/{}", name));
+                                    if let Some(service) = svc {
+                                        service.push_route(&format!("/hi/{}", name), None, None);
+                                    }
                                 } else {
                                     toast.write().popup(ToastInfo::warning("Empty input box", "Dioxus Toast"));
                                 }
