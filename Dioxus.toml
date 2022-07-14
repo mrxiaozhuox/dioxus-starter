@@ -39,8 +39,6 @@ style = []
 script = [
     "/assets/tailwind/tailwind.min.js",
     "/assets/tailwind/tailwind.config.js",
-
-    "/assets/markdown/markdown.js"
 ]
 
 [web.resource.dev]
