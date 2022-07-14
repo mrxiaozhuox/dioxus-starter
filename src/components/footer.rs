@@ -40,14 +40,6 @@ pub fn Footer(cx: Scope) -> Element {
             }
             Link {
                 class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
-                to: "/markdown",
-                Icon {
-                    size: 26,
-                    icon: fa_brands_icons::FaMarkdown
-                }
-            }
-            Link {
-                class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
                 to: "/about",
                 Icon {
                     size: 26,

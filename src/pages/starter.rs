@@ -96,43 +96,6 @@ pub fn SayHi(cx: Scope) -> Element {
 }
 
 pub fn About(cx: Scope) -> Element {
-    cx.render(rsx! {
-        section {
-            class: "h-screen bg-cover bg-white dark:bg-gray-600",
-            div {
-                class: "flex h-full w-full items-center justify-center container mx-auto px-8",
-                div {
-                    class: "max-w-2xl text-center",
-                    h1 {
-                        class: "text-3xl capitalize tracking-widest dark:text-white",
-                        "About Dioxus Starter"
-                    }
-                    div {
-                        class: "text-gray-800 dark:text-white mt-6",
-                        Href {
-                            to: "/",
-                            "Dioxus Starter"
-                        }
-                        " is a "
-                        Href {
-                            to: "https://dioxuslabs.com/",
-                            "Dioxus Web"
-                        }
-                        " template made by "
-                        Href {
-                            to: "http://github.com/mrxiaozhuox",
-                            "@mrxiaozhuox"
-                        }
-                        " for quick app development"
-                    }
-                    Footer {}
-                }
-            }
-        }
-    })
-}
-
-pub fn MarkdownDisplay(cx: Scope) -> Element {
     let content = include_str!("../markdown/readme.md");
     cx.render(rsx! {
         div {
@@ -149,7 +112,6 @@ pub fn MarkdownDisplay(cx: Scope) -> Element {
                 }
             }
             Footer {}
-            br {}
         }
     })
 }

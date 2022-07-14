@@ -8,7 +8,7 @@ mod hooks;
 mod pages;
 
 use hooks::mode::init_mode_info;
-use pages::starter::{About, HelloDioxus, SayHi, MarkdownDisplay};
+use pages::starter::{About, HelloDioxus, SayHi};
 
 static TOAST_MANAGER: dioxus::fermi::AtomRef<ToastManager> = |_| ToastManager::default();
 
@@ -36,10 +36,6 @@ fn App(cx: Scope) -> Element {
             Route {
                 to: "/hi/:name",
                 SayHi {}
-            }
-            Route {
-                to: "/markdown/",
-                MarkdownDisplay {}
             }
             Route {
                 to: "/about",
