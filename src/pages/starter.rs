@@ -139,7 +139,7 @@ pub fn MarkdownDisplay(cx: Scope) -> Element {
             class: "dark:bg-gray-600",
             br {}
             div {
-                class: "flex justify-center",
+                class: "md:flex md:justify-center",
                 div {
                     class: "block p-8 rounded-lg shadow-2xl bg-white dark:bg-gray-700",
                     Markdown {
