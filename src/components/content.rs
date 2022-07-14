@@ -16,6 +16,8 @@ pub fn Href<'a>(cx: Scope, to: &'a str, children: Element<'a>) -> Element {
 
 #[derive(Props, PartialEq)]
 pub struct MarkdownProps {
+    #[props(default)]
+    class: String,
     content: String,
 }
 
@@ -23,9 +25,11 @@ pub fn Markdown(cx: Scope<MarkdownProps>) -> Element {
     let md_parser = use_markdown(&cx);
     let content = md_parser(cx.props.content.clone());
     let _ = js_sys::eval("setTimeout(() => {initMarkdownBody();}, 100);");
+    let extra_class = &cx.props.class;
     cx.render(rsx! {
         div {
             id: "markdown-body",
+            class: "{extra_class}",
             dangerous_inner_html: "{content}",
         }
     })

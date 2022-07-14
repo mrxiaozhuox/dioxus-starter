@@ -133,12 +133,14 @@ pub fn About(cx: Scope) -> Element {
 }
 
 pub fn MarkdownDisplay(cx: Scope) -> Element {
+    let content = include_str!("../markdown/readme.md");
     cx.render(rsx! {
         div {
-            class: "pt-6 container mx-auto",
+            class: "mt-4 container mx-auto",
             Markdown {
-                content: "# Hello World".to_string()
+                content: content.to_string()
             }
+            Footer {}
         }
     })
 }
