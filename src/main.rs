@@ -14,7 +14,7 @@ static TOAST_MANAGER: dioxus::fermi::AtomRef<ToastManager> = |_| ToastManager::d
 
 fn main() {
     wasm_logger::init(wasm_logger::Config::default());
-    log::info!("Powered by Dioxus Starter: https://github.com/mrxiaozhuox/dioxus-starter");
+    log::info!("Dioxus Starter: https://github.com/mrxiaozhuox/dioxus-starter");
     dioxus::web::launch(App)
 }
 
