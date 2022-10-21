@@ -21,6 +21,7 @@ fn main() {
 fn App(cx: Scope) -> Element {
     // init mode information
     init_mode_info(&cx);
+    
     cx.render(rsx! {
         // dioxus toast manager init
         ToastFrame {
