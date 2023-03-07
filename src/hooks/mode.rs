@@ -6,7 +6,6 @@ pub fn is_dark(cx: &ScopeState) -> bool {
     let storage = use_local_storage(cx);
 
     let current_mode = storage.get("mode");
-    log::info!("{:?}", current_mode);
     if current_mode.is_none() {
         false
     } else {
@@ -25,6 +24,9 @@ pub fn mode(cx: &ScopeState,dark: bool) {
 }
 
 pub fn init_mode_info(cx: &ScopeState) {
+
+    let _ = js_sys::eval("document.body.classList.add('dark:bg-gray-600');");
+
     let storage = use_local_storage(cx);
     cx.use_hook( move || {
         let dark = storage.get("mode").unwrap_or("light".to_string()) == "dark";
