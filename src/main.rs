@@ -24,6 +24,12 @@ fn App(cx: Scope) -> Element {
 
     use_init_atom_root(&cx);
 
+    if js_sys::eval("document.body.classList.add('dark:bg-gray-600');").is_err() {
+        return cx.render(rsx! {
+            h1 { "Project Init Faield" }
+        });
+    }
+
     // init mode information
     init_mode_info(&cx);
 

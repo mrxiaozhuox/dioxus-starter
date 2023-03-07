@@ -3,7 +3,6 @@ use dioxus::prelude::*;
 use dioxus_router::{use_router, use_route};
 use dioxus_toast::ToastInfo;
 use fermi::use_atom_ref;
-use js_sys::eval;
 
 use crate::{
     components::{content::Markdown, footer::Footer},
@@ -84,7 +83,6 @@ pub fn SayHi(cx: Scope) -> Element {
 
 pub fn About(cx: Scope) -> Element {
     let content = include_str!("../markdown/readme.md");
-    eval("document.body.classList.add('dark:bg-gray-600');");
     cx.render(rsx! {
         div {
             class: "dark:bg-gray-600",
