@@ -3,7 +3,7 @@ use pulldown_cmark::{Options, Parser, html};
 
 pub fn use_markdown(cx: &ScopeState) -> &dyn Fn(String) -> String {
     let options = Options::all();
-    cx.use_hook(|_| {
+    cx.use_hook(|| {
         move |content: String| {
             let str = &content;
             let parser = Parser::new_ext(str, options);
