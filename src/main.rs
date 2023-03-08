@@ -30,23 +30,12 @@ fn App(cx: Scope) -> Element {
 
     cx.render(rsx! {
         // dioxus toast manager init
-        ToastFrame {
-            manager: use_atom_ref(&cx, TOAST_MANAGER),
-        }
+        ToastFrame { manager: use_atom_ref(&cx, TOAST_MANAGER) }
         // dioxus router info
-        Router {
-            Route {
-                to: "/",
-                HelloDioxus {}
-            }
-            Route {
-                to: "/hi/:name",
-                SayHi {}
-            }
-            Route {
-                to: "/about",
-                About {}
-            }
+        Router { 
+            Route { to: "/", HelloDioxus {} }
+            Route { to: "/hi/:name", SayHi {} }
+            Route { to: "/about", About {} }
             // 404 page
             Route { to: "", pages::_404::NotFound {} }
         }

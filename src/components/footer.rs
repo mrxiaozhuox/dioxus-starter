@@ -11,16 +11,11 @@ pub fn Footer(cx: Scope) -> Element {
     log::info!("dark mode: {:?}", is_dark(&cx));
     let current_mode = is_dark(&cx);
     cx.render(rsx! {
-        div {
-            class: "mt-6 flex space-x-4 justify-center",
+        div { class: "mt-6 flex space-x-4 justify-center",
             Link {
                 class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
                 to: "/",
-                Icon {
-                    height: 26,
-                    width: 26,
-                    icon: fa_solid_icons::FaHouse
-                }
+                Icon { height: 26, width: 26, icon: fa_solid_icons::FaHouse }
             }
             a {
                 class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
@@ -51,24 +46,15 @@ pub fn Footer(cx: Scope) -> Element {
             Link {
                 class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
                 to: "/about",
-                Icon {
-                    height: 26,
-                    width: 26,
-                    icon: fa_solid_icons::FaBook
-                }
+                Icon { height: 26, width: 26, icon: fa_solid_icons::FaBook }
             }
             a {
                 class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
                 href: "https://github.com/mrxiaozhuox/dioxus-starter",
-                Icon {
-                    height: 26,
-                    width: 26,
-                    icon: fa_brands_icons::FaGithub
-                }
+                Icon { height: 26, width: 26, icon: fa_brands_icons::FaGithub }
             }
         }
-        div {
-            class: "mt-10 flex justify-center text-gray-400",
+        div { class: "mt-10 flex justify-center text-gray-400",
             span {
                 "[ made by "
                 a {
