@@ -1,6 +1,5 @@
-
 use dioxus::prelude::*;
-use dioxus_router::{use_router, use_route};
+use dioxus_router::prelude::*;
 use dioxus_toast::ToastInfo;
 use fermi::use_atom_ref;
 
@@ -9,10 +8,11 @@ use crate::{
     TOAST_MANAGER,
 };
 
+#[component]
 pub fn HelloDioxus(cx: Scope) -> Element {
     let input_name = use_state(&cx, String::new);
-    let router = use_router(&cx);
-    let toast = use_atom_ref(&cx, TOAST_MANAGER);
+    let router = use_navigator(&cx);
+    let toast = use_atom_ref(&cx, &TOAST_MANAGER);
 
     cx.render(rsx! {
         section { class: "h-screen bg-cover bg-white dark:bg-gray-600",
@@ -38,7 +38,7 @@ pub fn HelloDioxus(cx: Scope) -> Element {
                             onclick: move |_| {
                                 let name = input_name.get();
                                 if !name.is_empty() {
-                                    router.push_route(&format!("/hi/{}", name), None, None);
+                                    router.push(&format!("/hi/{}", name));
                                 } else {
                                     toast.write().popup(ToastInfo::warning("Empty input box", "Dioxus Toast"));
                                 }
@@ -53,10 +53,9 @@ pub fn HelloDioxus(cx: Scope) -> Element {
     })
 }
 
-pub fn SayHi(cx: Scope) -> Element {
-    let route = use_route(&cx);
-    let name = route.segment("name").unwrap();
-    let name = urlencoding::decode(name).expect("UTF-8").to_string();
+#[component]
+pub fn SayHi(cx: Scope, name: String) -> Element {
+    let name = urlencoding::decode(&name).expect("UTF-8").to_string();
     cx.render(rsx! {
         section { class: "h-screen bg-cover bg-white dark:bg-gray-600",
             div { class: "flex h-full w-full items-center justify-center container mx-auto px-8",
@@ -71,6 +70,7 @@ pub fn SayHi(cx: Scope) -> Element {
     })
 }
 
+#[component]
 pub fn About(cx: Scope) -> Element {
     let content = include_str!("../markdown/readme.md");
     cx.render(rsx! {

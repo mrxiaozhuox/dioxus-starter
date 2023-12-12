@@ -1,11 +1,10 @@
+use crate::hooks::mode::{is_dark, mode};
 use dioxus::prelude::*;
 use dioxus_free_icons::{
     icons::{fa_brands_icons, fa_solid_icons},
     Icon,
 };
-use dioxus_router::Link;
-
-use crate::hooks::mode::{is_dark, mode};
+use dioxus_router::prelude::*;
 
 pub fn Footer(cx: Scope) -> Element {
     log::info!("dark mode: {:?}", is_dark(&cx));

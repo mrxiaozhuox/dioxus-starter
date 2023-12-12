@@ -6,19 +6,19 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-dioxus = { version = "0.3.1" }
-dioxus-web = "0.3.1"
-dioxus-router = "0.3.0"
-fermi = "0.3.0"
+dioxus = { version = "0.4.3" }
+dioxus-web = "0.4.3"
+dioxus-router = "0.4.3"
+fermi = "0.4.3"
 
 js-sys = "0.3.58"
 web-sys = { version = "0.3.58", features = ["Storage"] }
-dioxus-free-icons = { version = "0.6.0", features = ["font-awesome-brands", "font-awesome-solid" ] }
-dioxus-toast = { version = "0.2.0", default-features = false, features = ["web"] }
+dioxus-free-icons = { version = "0.7.0", features = ["font-awesome-brands", "font-awesome-solid" ] }
+dioxus-toast = { version = "0.3.0", default-features = false, features = ["web"] }
 gloo = "0.8.0"
 log = "0.4.6"
 wasm-logger = "0.2.0"
 anyhow = "1.0.57"
 urlencoding = "2.1.0"
 pulldown-cmark = "0.9.1"
-dioxus-use-storage = { git = "https://github.com/oovm/dioxus-hooks" }
+dioxus-local-storage = { git = "https://github.com/mrxiaozhuox/dioxus-local-storage" }
