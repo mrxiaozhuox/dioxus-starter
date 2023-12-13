@@ -77,8 +77,8 @@ pub fn About(cx: Scope) -> Element {
         div { class: "dark:bg-gray-600",
             br {}
             div { class: "md:flex md:justify-center",
-                div { class: "block p-8 rounded-lg shadow-2xl bg-white dark:bg-gray-700",
-                    Markdown { class: "dark:text-white", content: content.to_string() }
+                div { class: "block sm:p-6 md:p-8 rounded-lg shadow-2xl bg-white dark:bg-gray-700",
+                    Markdown { class: "dark:prose-invert", content: content.to_string() }
                 }
             }
             Footer {}
