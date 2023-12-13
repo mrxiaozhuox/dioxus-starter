@@ -2,7 +2,8 @@ use dioxus::prelude::*;
 
 use crate::components::footer::Footer;
 
-pub fn NotFound(cx: Scope) -> Element {
+#[component]
+pub fn NotFound(cx: Scope, route: String) -> Element {
     cx.render(rsx! {
         section { class: "h-screen bg-cover bg-white dark:bg-gray-600",
             div { class: "flex h-full w-full items-center justify-center container mx-auto px-8",

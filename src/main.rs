@@ -10,18 +10,28 @@ mod pages;
 
 use fermi::{use_atom_ref, use_init_atom_root, AtomRef};
 use hooks::mode::init_mode_info;
+use pages::_404::NotFound;
 use pages::starter::{About, HelloDioxus, SayHi};
 
 static TOAST_MANAGER: AtomRef<ToastManager> = AtomRef(|_| ToastManager::default());
 
 #[derive(Clone, Debug, PartialEq, Routable)]
 enum Route {
+    // Main Page
     #[route("/")]
     HelloDioxus {},
+    
+    // Say Hi Page
     #[route("/hi/:name")]
     SayHi { name: String },
+    
+    // About Page
     #[route("/about")]
     About {},
+
+    // 404 Not Found Page
+    #[route("/:route")]
+    NotFound { route: String },
 }
 
 fn main() {
@@ -40,13 +50,7 @@ fn App(cx: Scope) -> Element {
     cx.render(rsx! {
         // dioxus toast manager init
         ToastFrame { manager: use_atom_ref(&cx, &TOAST_MANAGER) }
-        // dioxus router info
-        Router::<Route> {
-            // Route { to: "/", HelloDioxus {} }
-            // Route { to: "/hi/:name", SayHi {} }
-            // Route { to: "/about", About {} }
-            // // 404 page
-            // Route { to: "", pages::_404::NotFound {} }
-        }
+        // dioxus router init
+        Router::<Route> { }
     })
 }
