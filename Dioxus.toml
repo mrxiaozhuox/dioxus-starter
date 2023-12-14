@@ -47,14 +47,3 @@ script = [
 # serve: [dev-server] only
 script = []
 
-[plugin]
-
-available = true
-
-loader = [
-    "/Users/mrxzx/Development/DioxusLabs/plugin-dev/dioxus-binaryen-plugin/"
-]
-
-[plugin.dioxus-binaryen]
-
-optimize = true
