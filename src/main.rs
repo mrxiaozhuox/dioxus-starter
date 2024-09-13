@@ -1,21 +1,17 @@
 #![allow(non_snake_case)]
 
 use dioxus::prelude::*;
-use dioxus_router::prelude::*;
 use dioxus_toast::{ToastFrame, ToastManager};
 
 mod components;
 mod hooks;
 mod pages;
 
-use fermi::{use_atom_ref, use_init_atom_root, AtomRef};
 use hooks::mode::init_mode_info;
 use pages::_404::NotFound;
 use pages::starter::{About, HelloDioxus, SayHi};
 
-static TOAST_MANAGER: AtomRef<ToastManager> = AtomRef(|_| ToastManager::default());
-
-#[derive(Clone, Debug, PartialEq, Routable)]
+#[derive(Routable, Clone, Debug, PartialEq)]
 enum Route {
     // Main Page
     #[route("/")]
@@ -35,22 +31,24 @@ enum Route {
 }
 
 fn main() {
+    
     wasm_logger::init(wasm_logger::Config::default());
+
+    dioxus_sdk::storage::set_dir!();
+
     log::info!("Dioxus Starter: https://github.com/mrxiaozhuox/dioxus-starter");
-    dioxus_web::launch(App)
+    launch(App)
 }
 
-fn App(cx: Scope) -> Element {
-    // init fermi atom root
-    use_init_atom_root(&cx);
-
+fn App() -> Element {
     // init mode information
-    init_mode_info(&cx);
+    init_mode_info();
 
-    cx.render(rsx! {
+    let toast = use_context_provider(|| Signal::new(ToastManager::default()));
+
+    rsx! {
         // dioxus toast manager init
-        ToastFrame { manager: use_atom_ref(&cx, &TOAST_MANAGER) }
-        // dioxus router init
-        Router::<Route> { }
-    })
+        ToastFrame { manager: toast }
+        Router::<Route> {}
+    }
 }

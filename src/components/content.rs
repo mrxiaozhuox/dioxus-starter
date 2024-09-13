@@ -1,24 +1,26 @@
 use dioxus::prelude::*;
-
-use crate::hooks::markdown::use_markdown;
+use pulldown_cmark::Parser;
 
 #[component]
-pub fn Href<'a>(cx: Scope, to: &'a str, children: Element<'a>) -> Element {
-    cx.render(rsx! {
-        a { class: "text-cyan-700 dark:text-cyan-100 underline", href: "{to}", target: "_blank", children }
-    })
+pub fn Href(to: ReadOnlySignal<String>, children: Element) -> Element {
+    rsx! {
+        a { class: "text-cyan-700 dark:text-cyan-100 underline", href: "{to}", target: "_blank", { children } }
+    }
 }
 
-#[derive(Props)]
-pub struct MarkdownProps<'a> {
+#[derive(Props, PartialEq, Clone)]
+pub struct MarkdownProps {
     #[props(default)]
-    class: &'a str,
+    class: ReadOnlySignal<String>,
     content: String,
 }
 
-pub fn Markdown<'a>(cx: Scope<'a, MarkdownProps<'a>>) -> Element {
-    let md_parser = use_markdown(&cx);
-    let content = md_parser(cx.props.content.clone());
-    let extra_class = &cx.props.class;
-    cx.render(rsx! {div { id: "markdown-body", class: "prose {extra_class}", dangerous_inner_html: "{content}" }})
+#[component]
+pub fn Markdown(props: MarkdownProps) -> Element {
+    let content = &props.content;
+    let parser = Parser::new(content);
+    let mut html_buf = String::new();
+    pulldown_cmark::html::push_html(&mut html_buf, parser);
+    let extra_class = &props.class;
+    rsx! {div { id: "markdown-body", class: "prose {extra_class}", dangerous_inner_html: "{html_buf}" }}
 }
