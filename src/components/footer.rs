@@ -23,7 +23,7 @@ pub fn Footer() -> Element {
                     *current_mode.write() = is_dark;
                     mode(is_dark);
                 },
-                if use_mode().read().clone() {
+                if current_mode.read().clone() {
                     Icon {
                         height: 26,
                         width: 26,
